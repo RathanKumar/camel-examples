@@ -31,7 +31,8 @@ public class OrderResponseValidator extends Validator {
     public void validate(Message message, DataType type) throws ValidationException {
         Object body = message.getBody();
         LOG.info("Validating message body: {}", body);
-        if (!(body instanceof OrderResponse)) {
+        LOG.info("Validating message type: {}", type);
+        if (!(type.getName().equals(body.getClass().getName()))) {
             throw new ValidationException(message.getExchange(), "Expected OrderResponse, but was " + body.getClass());
         }
         OrderResponse r = (OrderResponse)body;

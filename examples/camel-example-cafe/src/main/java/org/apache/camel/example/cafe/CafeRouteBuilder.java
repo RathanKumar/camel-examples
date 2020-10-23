@@ -90,6 +90,7 @@ public class CafeRouteBuilder extends RouteBuilder {
         from("direct:deliveries")
             .aggregate(new CafeAggregationStrategy()).method("waiter", "checkOrder").completionTimeout(5 * 1000L)
             .to("bean:waiter?method=prepareDelivery")
+            .to("bean:waiter?method=generateBill")
             .to("bean:waiter?method=deliverCafes");
 
     }

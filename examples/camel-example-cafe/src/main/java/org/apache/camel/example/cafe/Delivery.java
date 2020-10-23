@@ -25,6 +25,7 @@ public class Delivery {
     private List<Drink> deliveredDrinks;
 
     private int orderNumber;
+    private Bill bill;
 
     public Delivery(List<Drink> deliveredDrinks) {
         assert deliveredDrinks.size() > 0;
@@ -49,8 +50,13 @@ public class Delivery {
             buffer.append("\n");
         }
         buffer.append(SEPARATOR + "\n");
+        buffer.append(this.bill.toString());
+        buffer.append(SEPARATOR + "\n");
         return buffer.toString();
     }
 
+    public void addBill(Bill bill) {
+        this.bill = bill;
+    }
 }
 

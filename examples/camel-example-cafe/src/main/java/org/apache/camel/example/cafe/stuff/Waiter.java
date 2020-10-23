@@ -18,6 +18,7 @@ package org.apache.camel.example.cafe.stuff;
 
 import java.util.List;
 
+import org.apache.camel.example.cafe.Bill;
 import org.apache.camel.example.cafe.Delivery;
 import org.apache.camel.example.cafe.Drink;
 
@@ -25,6 +26,13 @@ public class Waiter {
     
     public Delivery prepareDelivery(List<Drink> drinks) {
         return new Delivery(drinks);
+    }
+
+    public Delivery generateBill(Delivery delivery){
+        List<Drink> drinks = delivery.getDeliveredDrinks();
+        Bill bill = new Bill(drinks);
+        delivery.addBill(bill);
+        return delivery;
     }
 
     

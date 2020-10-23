@@ -20,6 +20,9 @@ import org.apache.camel.util.ObjectHelper;
 
 public class Drink {
 
+    private static double BASE_PRICE = 10.99;
+    private static double ICE_ADDON = 0.99;
+
     private boolean iced;
 
     private int shots;
@@ -28,11 +31,24 @@ public class Drink {
 
     private int orderNumber;
 
+    public double price;
+
     public Drink(int orderNumber, DrinkType drinkType, boolean hot, int shots) {
         this.orderNumber = orderNumber;
         this.drinkType = drinkType;
         this.iced = hot;
         this.shots = shots;
+
+        this.price = calculatePrice();
+
+    }
+
+    private double calculatePrice() {
+        double price = BASE_PRICE;
+        if (iced) this.price =+ ICE_ADDON;
+        if (shots > 0) this.price = this.price * shots;
+
+        return price;
     }
 
     public int getOrderNumber() {

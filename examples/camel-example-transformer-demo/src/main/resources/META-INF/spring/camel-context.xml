@@ -85,7 +85,7 @@
         <!-- END SNIPPET: e5 -->
 
         <!-- START SNIPPET: e6 -->
-        <camel:route id="java">
+        <camel:route id="json">
             <camel:from uri="direct:java"/>
             <!-- This route expects Java object as an input/output type. -->
             <!--  If the request comes from xml route, the XML-Java transformer is applied. -->
